@@ -1,1 +1,3 @@
 # Assignments_work
+
+Assignments_work is a collection of full-stack software engineering and AI development assignments that demonstrate practical skills in backend development, frontend engineering, cloud-native technologies, spatial databases, and modern software architecture. The projects in this repository are designed to showcase clean code, scalable system design, and real-world problem-solving using technologies such as Python, FastAPI, React, TypeScript, PostgreSQL/PostGIS, Docker, and REST APIs. Each assignment emphasizes best practices, maintainable architecture, and production-oriented development while highlighting the ability to build complete end-to-end applications from database design to interactive user interfaces.
