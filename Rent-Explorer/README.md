@@ -96,6 +96,11 @@ pytest
 - Median values use PostgreSQL `percentile_cont(0.5)`.
 - The API caps response sizes to protect the service. For a larger production dataset, add clustering or vector tiles.
 
-## Production improvements
+
+## Future Enhancements
+
+Given more time, I would extend the application with several production-ready features. These include server-side pagination and clustering to improve map performance with larger datasets, Redis caching for frequently requested spatial queries, JWT-based authentication and role-based access control, comprehensive unit and integration tests, and a CI/CD pipeline using GitHub Actions. I would also enhance the user experience by adding advanced search filters, listing comparison, historical rent trends, interactive analytics dashboards, and real-time updates using WebSockets. From a GIS perspective, I would optimize spatial queries further with materialized views and precomputed area statistics, while improving scalability through asynchronous background jobs, monitoring, logging, and deployment to a cloud platform such as Azure or AWS with Kubernetes for high availability.
+
+### Production improvements
 
 For a production deployment, add pagination or map clustering, database migrations with Alembic, request logging/metrics, a tile or CDN strategy, authentication if data is private, and integration tests against a disposable PostGIS database.
