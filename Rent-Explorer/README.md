@@ -96,6 +96,82 @@ pytest
 - Median values use PostgreSQL `percentile_cont(0.5)`.
 - The API caps response sizes to protect the service. For a larger production dataset, add clustering or vector tiles.
 
+## Helsinki Listings App Architecture
+
+```
+
+
+
+                           USER
+                            │
+                            ▼
+                 +----------------------+
+                 | React + TypeScript   |
+                 |  (Frontend :3000)    |
+                 +----------------------+
+                            │
+                            │ REST API
+                            ▼
+                 +----------------------+
+                 | FastAPI Backend      |
+                 |      (:8080)         |
+                 +----------------------+
+                     │       │       │
+      ┌──────────────┘       │       └──────────────┐
+      ▼                      ▼                      ▼
+GET /listings        GET /areas/stats      GET /listings/near
+(Viewport Filter)    (Area Statistics)      (Radius Search)
+
+                     │
+                     ▼
+          PostgreSQL + PostGIS
+          --------------------
+          Listings (Points)
+          Areas (Polygons)
+          Spatial Indexes (GiST)
+          Spatial Queries
+```
+
+
+## Complete System Architecture
+
+```
+
+                          USER
+                            │
+                            ▼
+                 React + TypeScript
+                    Leaflet Map
+                         :3000
+                            │
+            ┌───────────────┼────────────────┐
+            ▼               ▼                ▼
+      /listings      /areas/stats     /listings/near
+            │               │                │
+            └───────────────┼────────────────┘
+                            ▼
+                     FastAPI Backend
+                          :8080
+                            │
+                Parameterized SQL Queries
+                            │
+        ┌───────────────────┼────────────────────┐
+        ▼                   ▼                    ▼
+   ST_Intersects      ST_Contains         ST_DWithin
+        │                   │                    │
+        └───────────────────┼────────────────────┘
+                            ▼
+                   PostgreSQL + PostGIS
+                            │
+          ┌─────────────────┴─────────────────┐
+          ▼                                   ▼
+   Listings Table                      Areas Table
+    (Spatial Points)                 (Spatial Polygons)
+          │                                   │
+          └──────────── GiST Indexes ─────────┘
+
+
+```
 
 ## Future Enhancements
 
