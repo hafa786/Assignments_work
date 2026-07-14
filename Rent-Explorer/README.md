@@ -173,10 +173,48 @@ GET /listings        GET /areas/stats      GET /listings/near
 
 ```
 
-## Future Enhancements
+## 🚀 Future Enhancements
 
-Given more time, I would extend the application with several production-ready features. These include server-side pagination and clustering to improve map performance with larger datasets, Redis caching for frequently requested spatial queries, JWT-based authentication and role-based access control, comprehensive unit and integration tests, and a CI/CD pipeline using GitHub Actions. I would also enhance the user experience by adding advanced search filters, listing comparison, historical rent trends, interactive analytics dashboards, and real-time updates using WebSockets. From a GIS perspective, I would optimize spatial queries further with materialized views and precomputed area statistics, while improving scalability through asynchronous background jobs, monitoring, logging, and deployment to a cloud platform such as Azure or AWS with Kubernetes for high availability.
+Given more development time, the following enhancements would further improve the application's performance, scalability, security, and overall user experience.
 
+### Performance & Scalability
+- Implement server-side pagination for efficient handling of large datasets.
+- Add marker clustering to improve map rendering performance.
+- Introduce Redis caching for frequently executed spatial queries.
+- Optimize spatial queries using materialized views and precomputed area statistics.
+- Process long-running tasks asynchronously using background workers.
+
+### Security
+- Implement JWT-based authentication.
+- Add Role-Based Access Control (RBAC) to secure API endpoints.
+
+### User Experience
+- Add advanced search and filtering options.
+- Allow users to compare multiple listings.
+- Display historical rent trends and market insights.
+- Build interactive analytics dashboards.
+- Enable real-time updates using WebSockets.
+
+### GIS & Spatial Analytics
+- Add a property **Value Score** by comparing each listing's €/m² against its area's median.
+- Support custom polygon drawing for user-defined search areas.
+- Add heatmaps and rental density visualizations.
+- Integrate travel-time and isochrone analysis using public transport data.
+- Continue optimizing PostGIS spatial queries for larger datasets.
+
+### Testing & Quality Assurance
+- Expand unit, integration, and end-to-end (E2E) test coverage.
+- Increase API validation and error handling.
+- Improve code quality with automated linting, formatting, and static analysis.
+
+### DevOps & Cloud Deployment
+- Implement a CI/CD pipeline using GitHub Actions.
+- Automate testing, linting, and deployments.
+- Deploy the application to Azure or AWS.
+- Use Kubernetes for container orchestration and high availability.
+- Add production monitoring, centralized logging, and alerting.
+
+These enhancements would make the application more scalable, secure, and production-ready while showcasing modern full-stack development, GIS best practices, and cloud-native architecture.
 ### Production improvements
 
 For a production deployment, add pagination or map clustering, database migrations with Alembic, request logging/metrics, a tile or CDN strategy, authentication if data is private, and integration tests against a disposable PostGIS database.
